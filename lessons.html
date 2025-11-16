@@ -1,3 +1,199 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lessons</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="container header-row"><div class="brand"><h1>Lessons</h1><div class="small">10 concise lessons</div></div><nav><a href="index.html">Home</a><a href="lessons.html">Lessons</a><a href="about.html">About</a></nav></div></header>
-<main class="container"><section class="hero" style="padding:18px;border-radius:8px"><h2>All Lessons</h2><p class="small">Choose any lesson to study and take the quiz.</p></section><section class="section"><div class="grid"><a class="card" href="lessons/lesson1-intro.html"><h3>Intro to Cloud</h3><p class="small">Overview of cloud models and benefits.</p></a><a class="card" href="lessons/lesson2-iam.html"><h3>IAM & Least Privilege</h3><p class="small">Identity and Access Management basics.</p></a><a class="card" href="lessons/lesson3-storage.html"><h3>Secure Storage</h3><p class="small">Protect buckets, objects, and snapshots.</p></a><a class="card" href="lessons/lesson4-network.html"><h3>Network Security</h3><p class="small">Security groups, firewall, and bastions.</p></a><a class="card" href="lessons/lesson5-encryption.html"><h3>Encryption Basics</h3><p class="small">TLS and at-rest encryption explained.</p></a><a class="card" href="lessons/lesson6-secrets.html"><h3>Secrets Management</h3><p class="small">Avoid hardcoding; use vaults.</p></a><a class="card" href="lessons/lesson7-logging.html"><h3>Logging & Monitoring</h3><p class="small">Capture logs and alert on anomalies.</p></a><a class="card" href="lessons/lesson8-hardening.html"><h3>Compute Hardening</h3><p class="small">Patch, remove unnecessary services, IMDSv2.</p></a><a class="card" href="lessons/lesson9-db.html"><h3>Database Security</h3><p class="small">Private endpoints and strong auth.</p></a><a class="card" href="lessons/lesson10-incident.html"><h3>Incident Response</h3><p class="small">Playbooks, containment, and postmortems.</p></a></div></section></main><footer class='container footer'><div>Created by <strong>Deepak Reddy Gunreddy</strong> — <a href='mailto:deepakreddygunreddy@gmail.com'>deepakreddygunreddygunreddy@gmail.com</a></div><div class='small'>Use locally: unzip and open index.html</div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lessons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(120deg, #182234 0%, #17304f 38%, #061427 100%);
+      --panel-bg: rgba(22, 46, 72, 0.92);
+      --card-bg: rgba(26, 44, 66, 0.98);
+      --card-border: #223459;
+      --accent: #2fe9c9;
+      --accent-hover: #18bca3;
+      --text-main: #eaf6fa;
+      --text-dark: #adbbd6;
+      --heading: #fff;
+      --shadow: 0 6px 28px 0 rgba(36, 74, 175, 0.15), 0 1.5px 4px 0 rgba(39,235,239,0.06);
+    }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+    }
+    header {
+      background: var(--bg-gradient);
+      box-shadow: var(--shadow);
+      padding: 0.75rem 0;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--heading);
+    }
+    .small {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+    nav a {
+      margin: 0 1rem;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color .2s, background 0.17s;
+      border-radius: 4px;
+      padding: 0.2em 0.55em;
+    }
+    nav a:hover { background: var(--accent); color: #104156; }
+    main {
+      margin-top: 2.5rem;
+    }
+    .hero {
+      padding: 1.5rem;
+      background: var(--panel-bg);
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .hero h2 { color: var(--heading); }
+    .hero p.small { color: var(--text-dark);}
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    }
+    .card {
+      display: block;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      border: 1.2px solid var(--card-border);
+      transition: box-shadow .17s,transform .17s, border 0.17s;
+      text-decoration: none;
+      color: var(--heading);
+      padding: 1.2rem 1rem;
+      position: relative;
+      min-height: 135px;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(35,220,217,0.16);
+      border: 2px solid var(--accent);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .card h3 {
+      margin-top: 0; font-size: 1.25rem; margin-bottom: 0.6rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .card p.small {
+      margin-bottom: 0; font-size: 0.98rem;
+      color: #a3d4db;
+    }
+    footer {
+      margin-top: 3rem; padding: 2.2rem 0 1rem;
+      background: linear-gradient(90deg, #15345dce, #1a2541ce);
+      text-align: center;
+      color: #b1d5f0;
+      font-size: 0.95em;
+      border-top: 2px solid var(--accent);
+      border-radius: 0 0 10px 10px;
+    }
+    .footer-link {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    @media (max-width: 650px) {
+      .header-row, nav { flex-direction:column; align-items:flex-start }
+      .header-row { gap: .4em }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<header>
+    <div class="container header-row">
+        <div class="brand">
+            <h1>Lessons</h1>
+            <div class="small">10 concise lessons</div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="lessons.html">Lessons</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="hero">
+        <h2>All Lessons</h2>
+        <p class="small">Choose any lesson to study and take the quiz.</p>
+    </section>
+    <section class="section">
+        <div class="grid">
+        <a class="card" href="lessons/lesson1-intro.html">
+            <h3>Intro to Cloud</h3>
+            <p class="small">Overview of cloud models and benefits.</p>
+        </a>
+        <a class="card" href="lessons/lesson2-iam.html">
+            <h3>IAM Least Privilege</h3>
+            <p class="small">Identity and Access Management basics.</p>
+        </a>
+        <a class="card" href="lessons/lesson3-storage.html">
+            <h3>Secure Storage</h3>
+            <p class="small">Protect buckets, objects, and snapshots.</p>
+        </a>
+        <a class="card" href="lessons/lesson4-network.html">
+            <h3>Network Security</h3>
+            <p class="small">Security groups, firewall, and bastions.</p>
+        </a>
+        <a class="card" href="lessons/lesson5-encryption.html">
+            <h3>Encryption Basics</h3>
+            <p class="small">TLS and at-rest encryption explained.</p>
+        </a>
+        <a class="card" href="lessons/lesson6-secrets.html">
+            <h3>Secrets Management</h3>
+            <p class="small">Avoid hardcoding, use vaults.</p>
+        </a>
+        <a class="card" href="lessons/lesson7-logging.html">
+            <h3>Logging & Monitoring</h3>
+            <p class="small">Capture logs and alert on anomalies.</p>
+        </a>
+        <a class="card" href="lessons/lesson8-hardening.html">
+            <h3>Compute Hardening</h3>
+            <p class="small">Patch, remove unnecessary services, IMDSv2.</p>
+        </a>
+        <a class="card" href="lessons/lesson9-db.html">
+            <h3>Database Security</h3>
+            <p class="small">Private endpoints and strong auth.</p>
+        </a>
+        <a class="card" href="lessons/lesson10-incident.html">
+            <h3>Incident Response</h3>
+            <p class="small">Playbooks, containment, and postmortems.</p>
+        </a>
+        </div>
+    </section>
+</main>
+<footer>
+    Created by <span style="font-weight:bold;color:#fff;">Deepak Reddy Gunreddy</span> —
+    <a class="footer-link" href="mailto:deepakreddygunreddy@gmail.com">deepakreddygunreddy@gmail.com</a><br>
+    <span style="color:#aef9ee;">Use locally: unzip and open <b>index.html</b></span>
+</footer>
+</body>
+</html>
